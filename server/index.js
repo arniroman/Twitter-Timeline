@@ -17,9 +17,9 @@ app.use(express.static('client'));
 const routes = require("./routs/api/routes")(app);
 
 
-app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname, "../client", "index.html"));
-});
+// app.all("/*", (request, response) => {
+//   response.sendFile(path.resolve(__dirname, "../client", "index.html"));
+// });
 module.exports = app;
 
 module.exports.start = () =>
