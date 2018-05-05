@@ -4,7 +4,6 @@ var app = express();
 
 var config = require("./config");
 
-
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -14,7 +13,7 @@ app.use(
 
 app.use(express.static("client"));
 
-const routes = require('./routs/api/routes')(app)
+const routes = require("./routs/api/routes")(app);
 
 module.exports.start = () =>
   app.listen(config.port, () =>
