@@ -17,6 +17,6 @@ const routes = require("./routs/api/routes")(app);
 
 module.exports = app;
 module.exports.start = () =>
-  app.listen(process.env.PORT || config.port, () =>
+  app.listen(process.env.PORT || 8800, () =>
     console.log("App listening on port " + config.port)
   );
