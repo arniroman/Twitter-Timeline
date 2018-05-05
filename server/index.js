@@ -15,6 +15,10 @@ app.use(express.static("client"));
 
 const routes = require("./routs/api/routes")(app);
 
+app.get("*", (request, response) => {
+  response.sendFile(path.resolve(__dirname, "../client/", "index.html"));
+});
+
 module.exports = app;
 module.exports.start = () =>
   app.listen(process.env.PORT || 8800, () =>
