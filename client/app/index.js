@@ -1,4 +1,5 @@
 import React from "react";
+import {  BrowserRouter ,Switch, Router, Route } from "react-router-dom";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { HomePage } from "./components/Home/home";
@@ -6,7 +7,11 @@ import store from "./store";
 
 render(
   <Provider store={store}>
-      <HomePage />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("app")
 );
