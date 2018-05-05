@@ -4,8 +4,7 @@
   "description": "fetch tweets timeline",
   "main": "index.js",
   "scripts": {
-    "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p",
+    "prod": "NODE_ENV=production node index.js",
     "test": "mocha server/tests/**/*.js"
   },
   "author": "",
