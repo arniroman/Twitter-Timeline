@@ -21,6 +21,6 @@ app.get("*", (request, response) => {
 
 module.exports = app;
 module.exports.start = () =>
-  app.listen(process.env.PORT || 8800, () =>
+  app.listen(config.port, () =>
     console.log("App listening on port " + config.port)
   );
