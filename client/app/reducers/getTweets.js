@@ -1,6 +1,14 @@
+import {
+  FETCH_TWEETS_SUCCESS,
+  FETCH_TWEETS_FAILURE
+} from "../consts/actionTypes";
+
 export default function getAllTwitts(state = [], action) {
   switch (action.type) {
-    case "GET_ALL_TWITTS":
+    case FETCH_TWEETS_SUCCESS:
+      return action.payload;
+      break;
+    case FETCH_TWEETS_FAILURE:
       return action.payload;
       break;
     default:
