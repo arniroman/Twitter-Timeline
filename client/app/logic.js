@@ -1,8 +1,8 @@
 import axios from "axios";
-import getTwitts from "./actions/getTwitts";
+import getTweets from "./actions/getTweets";
 
-export const fetchAllTwitts = data => dispatch => {
-  axios.post("/twitts", { data }).then(response => {
-    dispatch(getTwitts(response.data));
+export const fetchAllTweets = data => dispatch => {
+  axios.post("/tweets", { data }).then(response => {
+    dispatch(getTweets(response.data));
   });
 };

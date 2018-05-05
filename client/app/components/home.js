@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { fetchAllTwitts } from "../logic";
+import { fetchAllTweets } from "../logic";
 
 class HomePage extends React.Component {
 
@@ -11,7 +11,7 @@ class HomePage extends React.Component {
 
   handleButton = () => {
     let sendData = this.state.inputData;
-    this.props.fetchAllTwitts(sendData);
+    this.props.fetchAllTweets(sendData);
   };
 
   render() {
@@ -37,4 +37,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchAllTwitts })(HomePage);
+export default connect(mapStateToProps, { fetchAllTweets })(HomePage);
