@@ -15,6 +15,7 @@ app.use(express.static("client"));
 
 const routes = require("./routs/api/routes")(app);
 
+module.exports = app;
 module.exports.start = () =>
   app.listen(config.port, () =>
     console.log("App listening on port " + config.port)

@@ -1,9 +1,9 @@
-import React from "react";
+import React,{ Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { fetchAllTweets } from "../logic";
 
-class HomePage extends React.Component {
+class HomePage extends Component {
 
   handelInputData = e => {
     this.setState({ inputData: e.target.value });
