@@ -10,14 +10,18 @@ class TweetsView extends Component {
     this.setState({ inputData: e.target.value });
   };
 
-  handleButton = () => {
+  sendData = () => {
     let sendData = this.state.inputData;
     this.props.fetchAllTweets(sendData);
   };
 
   tweetsView = () => {
     if (this.props.allTwits.errors) {
-      return <div>{this.props.allTwits.errors[0].message}</div>;
+      return (
+        <div className={css(styles.errorBlock)}>
+          {this.props.allTwits.errors[0].message}
+        </div>
+      );
     } else {
       return (
         <div>
@@ -47,10 +51,12 @@ class TweetsView extends Component {
               onChange={e => this.handelInputData(e)}
               placeholder="Search users..."
             />
-            <div className={css(styles.searchBtn)} onClick={this.handleButton}><i class="fas fa-search"></i></div>
-           {this.tweetsView()}
+            <div className={css(styles.searchBtn)} onClick={this.sendData}>
+              <i class="fas fa-search" />
+            </div>
+            {this.tweetsView()}
           </div>
-        </div> 
+        </div>
       </div>
     );
   }

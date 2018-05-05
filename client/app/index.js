@@ -4,14 +4,11 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { HomePage } from "./components/Home/home";
 import store from "./store";
+import Routes from "./routes/routes";
 
 render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-      </Switch>
-    </BrowserRouter>
+    <Routes />
   </Provider>,
   document.getElementById("app")
 );
