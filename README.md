@@ -3,7 +3,7 @@
 * git
 * nodejs
 * webpack
-* mocha
+* mocha for testing
 
 
 **Steps:**
