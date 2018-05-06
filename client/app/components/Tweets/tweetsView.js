@@ -15,28 +15,32 @@ class TweetsView extends Component {
   };
 
   tweetsView = () => {
-    if (this.props.allTwits.error) {
-      return (
-        <div className={css(styles.errorBlock)}>
-          {this.props.allTwits.message}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          {this.props.allTwits.map((item, key) => (
-            <div className={css(styles.tweetsItemBox)} key={key}>
-              <img src={item.user.profile_image_url_https} />
-              <p>
-                {new Date(item.created_at).toLocaleString("en-US", {
-                  timeZone: "Europe/Helsinki"
-                })}
-              </p>
-              <p className={css(styles.tweetsItems)}>{item.text} </p>
-            </div>
-          ))}
-        </div>
-      );
+    const result = this.props.allTwits;
+    if (result) {
+      if (result.length < 1) {
+        return (
+          <div className={css(styles.emptyTwits)}>User haven't any posts</div>
+        );
+      }
+      if (result.error) {
+        return <div className={css(styles.errorBlock)}>{result.message}</div>;
+      } else {
+        return (
+          <div>
+            {result.map((item, key) => (
+              <div className={css(styles.tweetsItemBox)} key={key}>
+                <img src={item.user.profile_image_url_https} />
+                <p>
+                  {new Date(item.created_at).toLocaleString("en-US", {
+                    timeZone: "Europe/Helsinki"
+                  })}
+                </p>
+                <p className={css(styles.tweetsItems)}>{item.text} </p>
+              </div>
+            ))}
+          </div>
+        );
+      }
     }
   };
 

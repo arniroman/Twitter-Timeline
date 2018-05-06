@@ -24373,7 +24373,7 @@
 	var _actionTypes = __webpack_require__(221);
 
 	function getAllTwitts() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -27619,37 +27619,47 @@
 	      var sendData = _this.state.inputData;
 	      _this.props.fetchAllTweets(sendData);
 	    }, _this.tweetsView = function () {
-	      if (_this.props.allTwits.error) {
-	        return _react2.default.createElement(
-	          "div",
-	          { className: (0, _aphrodite.css)(_styleTweets2.default.errorBlock) },
-	          _this.props.allTwits.message
-	        );
-	      } else {
-	        return _react2.default.createElement(
-	          "div",
-	          null,
-	          _this.props.allTwits.map(function (item, key) {
-	            return _react2.default.createElement(
-	              "div",
-	              { className: (0, _aphrodite.css)(_styleTweets2.default.tweetsItemBox), key: key },
-	              _react2.default.createElement("img", { src: item.user.profile_image_url_https }),
-	              _react2.default.createElement(
-	                "p",
-	                null,
-	                new Date(item.created_at).toLocaleString("en-US", {
-	                  timeZone: "Europe/Helsinki"
-	                })
-	              ),
-	              _react2.default.createElement(
-	                "p",
-	                { className: (0, _aphrodite.css)(_styleTweets2.default.tweetsItems) },
-	                item.text,
-	                " "
-	              )
-	            );
-	          })
-	        );
+	      var result = _this.props.allTwits;
+	      if (result) {
+	        if (result.length < 1) {
+	          return _react2.default.createElement(
+	            "div",
+	            { className: (0, _aphrodite.css)(_styleTweets2.default.emptyTwits) },
+	            "User haven't any posts"
+	          );
+	        }
+	        if (result.error) {
+	          return _react2.default.createElement(
+	            "div",
+	            { className: (0, _aphrodite.css)(_styleTweets2.default.errorBlock) },
+	            result.message
+	          );
+	        } else {
+	          return _react2.default.createElement(
+	            "div",
+	            null,
+	            result.map(function (item, key) {
+	              return _react2.default.createElement(
+	                "div",
+	                { className: (0, _aphrodite.css)(_styleTweets2.default.tweetsItemBox), key: key },
+	                _react2.default.createElement("img", { src: item.user.profile_image_url_https }),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  new Date(item.created_at).toLocaleString("en-US", {
+	                    timeZone: "Europe/Helsinki"
+	                  })
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: (0, _aphrodite.css)(_styleTweets2.default.tweetsItems) },
+	                  item.text,
+	                  " "
+	                )
+	              );
+	            })
+	          );
+	        }
 	      }
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
@@ -27724,7 +27734,7 @@
 	    }).catch(function (err) {
 	      dispatch((0, _getTweets.getFailure)({
 	        error: err,
-	        message: "user not found"
+	        message: "User not found"
 	      }));
 	    });
 	  };
@@ -31508,7 +31518,11 @@
 	  },
 	  errorBlock: {
 	    paddingTop: '25px',
-	    color: 'red'
+	    color: '#ff2323'
+	  },
+	  emptyTwits: {
+	    paddingTop: '25px',
+	    color: '#794bc4'
 	  }
 	});
 

@@ -36,6 +36,10 @@ export default StyleSheet.create({
   },
   errorBlock: {
     paddingTop: '25px',
-    color: 'red'
+    color: '#ff2323'
+  },
+  emptyTwits:{
+    paddingTop: '25px',
+    color: '#794bc4'
   }
 });
