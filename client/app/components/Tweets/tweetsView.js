@@ -19,7 +19,7 @@ class TweetsView extends Component {
     if (result) {
       if (result.length < 1) {
         return (
-          <div className={css(styles.emptyTwits)}>User haven't any posts</div>
+          <div className={css(styles.emptyTwits)}>User have not any posts</div>
         );
       }
       if (result.error) {

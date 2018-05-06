@@ -27625,7 +27625,7 @@
 	          return _react2.default.createElement(
 	            "div",
 	            { className: (0, _aphrodite.css)(_styleTweets2.default.emptyTwits) },
-	            "User haven't any posts"
+	            "User have not any posts"
 	          );
 	        }
 	        if (result.error) {
