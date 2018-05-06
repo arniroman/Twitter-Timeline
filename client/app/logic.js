@@ -7,7 +7,12 @@ export const fetchAllTweets = data => dispatch => {
     .then(response => {
       dispatch(getTweets(response.data));
     })
-    .catch(error => {
-      dispatch(getFailure(error));
+    .catch(err => {
+      dispatch(
+        getFailure({
+          error: err,
+          message: "user not found"
+        })
+      );
     });
 };

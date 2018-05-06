@@ -15,10 +15,10 @@ class TweetsView extends Component {
   };
 
   tweetsView = () => {
-    if (this.props.allTwits.errors) {
+    if (this.props.allTwits.error) {
       return (
         <div className={css(styles.errorBlock)}>
-          {this.props.allTwits.errors[0].message}
+          {this.props.allTwits.message}
         </div>
       );
     } else {

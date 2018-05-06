@@ -27619,11 +27619,11 @@
 	      var sendData = _this.state.inputData;
 	      _this.props.fetchAllTweets(sendData);
 	    }, _this.tweetsView = function () {
-	      if (_this.props.allTwits.errors) {
+	      if (_this.props.allTwits.error) {
 	        return _react2.default.createElement(
 	          "div",
 	          { className: (0, _aphrodite.css)(_styleTweets2.default.errorBlock) },
-	          _this.props.allTwits.errors[0].message
+	          _this.props.allTwits.message
 	        );
 	      } else {
 	        return _react2.default.createElement(
@@ -27721,8 +27721,11 @@
 	  return function (dispatch) {
 	    _axios2.default.post("/tweets", { data: data }).then(function (response) {
 	      dispatch((0, _getTweets.getTweets)(response.data));
-	    }).catch(function (error) {
-	      dispatch((0, _getTweets.getFailure)(error));
+	    }).catch(function (err) {
+	      dispatch((0, _getTweets.getFailure)({
+	        error: err,
+	        message: "user not found"
+	      }));
 	    });
 	  };
 	};

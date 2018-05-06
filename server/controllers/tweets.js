@@ -23,10 +23,17 @@ module.exports = {
       `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name= ${screen_name} &count=${countUsers}`,
       Access_token,
       Access_token_secret,
-      (e, data, result) => {
-        if (e) console.log(e);
-        res.send(data);
-        console.log(JSON.parse(data));
+      (err, data, result) => {
+        if (err) {
+          console.log(err,'err');
+          res.status(401).send({
+            error: err,
+            message: "user not found"
+          });
+        } else {
+          res.send(data);
+          console.log(data);
+        }
       }
     );
   }
